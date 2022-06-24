@@ -1,9 +1,14 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { addExpense, removeExpense } from "./features/expenses/expensesSlice";
 
 function App() {
   const expenses = useSelector((state) => state.expenses.value);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(expenses, "<- useEffect tracker");
+  }, [expenses]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
